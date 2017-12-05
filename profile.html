@@ -1,0 +1,48 @@
+<DOCTYPE!>
+<html>
+<head>
+  <script type="text/javascript">
+    function load(){
+	  var fname,lname,dob,mail,pwd;
+	  var cookie_values = document.cookie.split(';');
+	  for(var i=0;i < cookie_values.length;i++) {
+	    var c = cookie_values[i];
+		while (c.charAt(0)==' ') c = c.substring(1,c.length);
+		if (c.indexOf("fname=") == 0) fname=c.substring("fname=".length,c.length);
+		if (c.indexOf("lname=") == 0) lname=c.substring("lname=".length,c.length);
+		if (c.indexOf("dob=") == 0) dob=c.substring("dob=".length,c.length);
+		if (c.indexOf("mail=") == 0) mail=c.substring("mail=".length,c.length);
+		if (c.indexOf("pwd=") == 0) pwd=c.substring("pwd=".length,c.length);
+	  }
+	  document.getElementById("fname").value=fname;
+	  document.getElementById("lname").value=lname;
+	  document.getElementById("dob").value=dob;
+	  document.getElementById("mail").value=mail;
+	  document.getElementById("pwd").value=pwd;
+	}
+	</script>
+</head>
+<body style="background-color:grey" onload="load()">
+  <div style="margin-left:40%;margin-top:6%;float:center;width:20%;background-color:black;color:white">
+  <h1 style="text-align:center;margin-top:5%;color:white">Profile</h1>
+  <form action="updating" method="POST">
+    <div style="text-align:center">
+	  <label>First Name</label><br/>
+	  <input type="text" id="fname" name="fname" required><br/><br/>
+	  <label>Last Name</label><br/>
+	  <input type="text" id="lname" name="lname" required><br/><br/>
+	  <label>Date of Birth</label><br/>
+	  <input type="date" id="dob" name="dob" required><br/><br/>
+	  <label>E-Mail ID</label><br/>
+      <input type="mail" id="mail" name="mail" disabled><br/><br/>
+	  <label>Password</label><br/>
+      <input type="password" id="pwd" name="pwd" disabled>
+    </div><br/><br/>
+    <div>
+      <input type="submit" value="Submit" id="submit" name="submit" style="font-size:1em;font-weight:bold;background-color:grey;float:left">
+	  <a href="logout.html" style="float:right;color:white">Logout</a>
+    </div><br/><br/>
+	</form>
+  </div>
+</body>
+</html>
